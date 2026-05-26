@@ -1,0 +1,57 @@
+/* ─── Fonts — must precede @import "tailwindcss" ────────────────────────────── */
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600,700&f[]=general-sans@300,400,500,600&display=swap");
+
+@import "tailwindcss";
+
+/* ─── CSS Custom Properties ─────────────────────────────────────────────────── */
+:root {
+  --font-heading: "Clash Display Variable", system-ui, sans-serif;
+  --font-body: "General Sans Variable", system-ui, sans-serif;
+
+  --color-bg:          #f8f8f8;
+  --color-surface:     #ffffff;
+  --color-sidebar:     #2c2e33;
+  --color-accent:      #8fa998;
+  --color-accent-light:#d7e3db;
+  --color-dark:        #2c2e33;
+  --color-text:        #2c2e33;
+  --color-text-muted:  #6b7280;
+  --color-border:      #e5e7eb;
+  --color-border-accent: #8fa998;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); }
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #8fa998; }
+
+/* ─── Utilities ─────────────────────────────────────────────────────────────── */
+.section-anchor { scroll-margin-top: 40px; }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.card-accent {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-border-accent);
+  border-radius: 12px;
+}
