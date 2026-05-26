@@ -1,17 +1,37 @@
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { brand } from "@/config/brand";
 
-function LogoVariant({ bg, src, label, w, border }: { bg: string; src: string; label: string; w: number; border?: boolean }) {
+// Logo heights (px) for each variant — width scales automatically from SVG aspect ratio
+const H = {
+  landscape: 28,
+  portrait:  96,
+  motif:     72,
+  typeface:  14,
+};
+
+function Logo({ src, alt = "Kernel", maxH, className = "" }: { src: string; alt?: string; maxH: number; className?: string }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      style={{ height: maxH, width: "auto", maxWidth: "100%", display: "block" }}
+      className={className}
+    />
+  );
+}
+
+function LogoVariant({ bg, src, label, maxH, border }: { bg: string; src: string; label: string; maxH: number; border?: boolean }) {
   return (
     <div>
-      <div className={`rounded-xl flex items-center justify-center p-10 mb-3 aspect-video ${border ? "border border-[#e5e7eb]" : ""}`} style={{ backgroundColor: bg }}>
-        <img src={src} alt="Kernel" style={{ width: w, height: "auto", maxWidth: "100%" }} />
+      <div
+        className={`rounded-xl flex items-center justify-center p-10 mb-3 aspect-video ${border ? "border border-[#e5e7eb]" : ""}`}
+        style={{ backgroundColor: bg }}
+      >
+        <Logo src={src} maxH={maxH} />
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mt-1">
         <p className="text-xs text-[#9ca3af]">{label}</p>
-        <a href={src} download className="text-[10px] text-[#8fa998] hover:underline flex items-center gap-1">
-          ↓ SVG
-        </a>
+        <a href={src} download className="text-[10px] text-[#8fa998] hover:underline">↓ SVG</a>
       </div>
     </div>
   );
@@ -22,18 +42,16 @@ export default function LogoSystem() {
     <SectionWrapper id="logo" label="02 — Logo System" title="Logo system."
       description="Kernel's visual identity uses four logo configurations. Choose based on context and available space.">
 
-      {/* Four configurations */}
       <div className="grid sm:grid-cols-2 gap-6 mb-12">
-        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Landscape-Black.svg" label="Landscape — light background" w={220} border />
-        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Landscape-White.svg" label="Landscape — dark background" w={220} />
-        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Portrait-Black.svg"  label="Portrait — light background"  w={120} border />
-        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Portrait-White.svg"  label="Portrait — dark background"   w={120} />
+        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Landscape-Black.svg" label="Landscape — light background" maxH={H.landscape} border />
+        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Landscape-White.svg" label="Landscape — dark background"  maxH={H.landscape} />
+        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Portrait-Black.svg"  label="Portrait — light background"  maxH={H.portrait}  border />
+        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Portrait-White.svg"  label="Portrait — dark background"   maxH={H.portrait} />
       </div>
 
-      {/* Motif + Typeface */}
       <div className="grid sm:grid-cols-2 gap-6 mb-16">
-        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Motif-White.svg"    label="Motif only — standalone mark" w={100} />
-        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Typeface-Black.svg" label="Wordmark only — when motif used elsewhere" w={160} border />
+        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Motif-White.svg"    label="Motif only — standalone mark"              maxH={H.motif} />
+        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Typeface-Black.svg" label="Wordmark only — when motif used elsewhere" maxH={H.typeface} border />
       </div>
 
       {/* Clear space + Min size */}
@@ -42,7 +60,7 @@ export default function LogoSystem() {
           <h3 className="text-[10px] tracking-[0.2em] uppercase text-[#9ca3af] mb-6">Clear Space</h3>
           <div className="flex items-center justify-center py-6 mb-4">
             <div className="relative border border-dashed border-[#8fa998]/40 p-8">
-              <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ width: 140, height: "auto" }} />
+              <Logo src="/logos/Kernel-Landscape-Black.svg" maxH={22} />
               {["top","bottom","left","right"].map((pos) => (
                 <span key={pos} className={`absolute text-[9px] text-[#8fa998]/60 ${
                   pos==="top"?"top-0 left-1/2 -translate-x-1/2 -translate-y-1/2":
@@ -59,11 +77,11 @@ export default function LogoSystem() {
           <h3 className="text-[10px] tracking-[0.2em] uppercase text-[#9ca3af] mb-6">Minimum Size</h3>
           <div className="flex items-end gap-8 py-4 mb-4">
             <div>
-              <img src="/logos/Kernel-Motif-Black.svg" alt="Kernel motif" style={{ width: 24, height: "auto" }} className="mb-2" />
+              <Logo src="/logos/Kernel-Motif-Black.svg" maxH={18} className="mb-2" />
               <p className="text-[10px] text-[#9ca3af]">24px digital</p>
             </div>
             <div>
-              <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ width: 80, height: "auto" }} className="mb-2" />
+              <Logo src="/logos/Kernel-Landscape-Black.svg" maxH={14} className="mb-2" />
               <p className="text-[10px] text-[#9ca3af]">10mm print</p>
             </div>
           </div>

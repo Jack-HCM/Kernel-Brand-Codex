@@ -33,7 +33,7 @@ export default function Sidebar() {
     <>
       {/* Mobile top bar */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-[#2c2e33]">
-        <img src="/logos/Kernel-Typeface-White.svg" alt="Kernel" style={{ width: 80, height: "auto" }} />
+        <img src="/logos/Kernel-Typeface-White.svg" alt="Kernel" style={{ height: 11, width: "auto", maxWidth: "100%", display: "block" }} />
         <button onClick={() => setOpen(!open)} className="flex flex-col gap-1.5 p-1" aria-label="Toggle menu">
           <span className={`block h-px w-5 bg-white transition-transform ${open ? "rotate-45 translate-y-2" : ""}`} />
           <span className={`block h-px w-5 bg-white transition-opacity ${open ? "opacity-0" : ""}`} />
@@ -55,7 +55,7 @@ export default function Sidebar() {
       <aside className="hidden lg:flex flex-col fixed top-0 left-0 h-full w-56 bg-[#2c2e33] z-40">
         <div className="px-6 pt-8 pb-6 border-b border-white/8">
           <p className="text-[10px] tracking-[0.2em] uppercase text-[#6b7280] mb-4">Brand Codex</p>
-          <img src="/logos/Kernel-Landscape-White.svg" alt="Kernel" style={{ width: 110, height: "auto" }} className="mb-2" />
+          <img src="/logos/Kernel-Landscape-White.svg" alt="Kernel" style={{ height: 18, width: "auto", maxWidth: "100%", display: "block" }} className="mb-2" />
           <p className="text-[11px] text-[#6b7280] mt-2">v{brand.version} · {brand.year}</p>
         </div>
 
