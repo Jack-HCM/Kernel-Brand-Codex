@@ -30,7 +30,7 @@ export default function Cover() {
           <img
             src="/logos/Kernel-Landscape-White.svg"
             alt="Kernel"
-            style={{ height: 42, width: "auto", maxWidth: "100%", display: "block" }}
+            style={{ width: 220, height: "auto", display: "block" }}
           />
         </div>
         <h1 className="font-heading text-5xl lg:text-7xl font-medium text-white leading-[1.05] max-w-2xl mb-6">

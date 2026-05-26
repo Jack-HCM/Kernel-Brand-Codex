@@ -27,7 +27,7 @@ export default function BrandApplications() {
             <div className="absolute inset-0" style={{ backgroundColor: "rgba(44,46,51,0.78)" }} />
             <div className="relative p-8">
               <nav className="flex items-center justify-between mb-14">
-                <img src="/logos/Kernel-Landscape-White.svg" alt="Kernel" style={{ height: 18, width: "auto", maxWidth: "100%", display: "block" }} />
+                <img src="/logos/Kernel-Landscape-White.svg" alt="Kernel" style={{ width: 100, height: "auto", display: "block" }} />
                 <div className="hidden sm:flex items-center gap-6 text-xs text-[#9ca3af]">
                   <span>Product</span><span>Customer stories</span><span>About</span>
                   <button className="px-4 py-2 rounded-lg bg-[#8fa998] text-[#2c2e33] text-xs font-medium">Book a demo</button>
@@ -82,7 +82,7 @@ export default function BrandApplications() {
             <img src="/imagery/waves-green.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
             <div className="absolute inset-0" style={{ backgroundColor: "rgba(44,46,51,0.80)" }} />
             <div className="relative flex flex-col justify-between h-full">
-              <img src="/logos/Kernel-Landscape-White.svg" alt="Kernel" style={{ height: 10, width: "auto", maxWidth: "100%", display: "block" }} />
+              <img src="/logos/Kernel-Landscape-White.svg" alt="Kernel" style={{ width: 60, height: "auto", display: "block" }} />
               <div>
                 <p className="font-heading text-[10px] font-medium leading-snug text-white mb-3">
                   &ldquo;Kernel removed 20,000 duplicate accounts in our first week.&rdquo;
@@ -108,7 +108,7 @@ export default function BrandApplications() {
             <img src="/imagery/waves-grey.jpg" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
             <div className="absolute inset-0" style={{ backgroundColor: "rgba(44,46,51,0.82)" }} />
             <div className="relative flex flex-col justify-between h-full">
-              <img src="/logos/Kernel-Motif-White.svg" alt="Kernel" style={{ height: 20, width: "auto", maxWidth: "100%", display: "block" }} />
+              <img src="/logos/Kernel-Motif-White.svg" alt="Kernel" style={{ width: 28, height: "auto", display: "block" }} />
               <div>
                 <p className="font-heading text-4xl font-medium text-white leading-none mb-1">20k+</p>
                 <p className="text-[9px] text-[#d7e3db] leading-snug mb-1">duplicate accounts removed.</p>
@@ -119,7 +119,7 @@ export default function BrandApplications() {
 
           {/* 3 — Brand statement (green accent bg) */}
           <div className="aspect-square rounded-xl overflow-hidden relative flex flex-col justify-between p-5" style={{ backgroundColor: "#8fa998" }}>
-            <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ height: 10, width: "auto", maxWidth: "100%", display: "block" }} />
+            <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ width: 60, height: "auto", display: "block" }} />
             <div>
               <p className="font-heading text-sm font-medium text-[#2c2e33] leading-tight mb-2">
                 No waterfalls. No compromises.
@@ -133,7 +133,7 @@ export default function BrandApplications() {
 
           {/* 4 — Feature / light */}
           <div className="aspect-square rounded-xl flex flex-col justify-between p-5 border border-[#e5e7eb]" style={{ backgroundColor: "#f8f8f8" }}>
-            <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ height: 10, width: "auto", maxWidth: "100%", display: "block" }} />
+            <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ width: 60, height: "auto", display: "block" }} />
             <div>
               <span className="inline-block px-2 py-0.5 rounded-full border border-[#8fa998]/40 bg-[#8fa998]/10 text-[#3c4e53] text-[6px] mb-2">
                 AI-native
