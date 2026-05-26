@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { brand } from "@/config/brand";
 
@@ -6,6 +9,20 @@ function isLight(hex: string) {
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
   return (r * 299 + g * 587 + b * 114) / 1000 > 160;
+}
+
+function CopyHex({ hex, className, style }: { hex: string; className?: string; style?: React.CSSProperties }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText(hex);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
+  return (
+    <button onClick={copy} title="Copy hex" className={`font-heading font-medium tabular-nums transition-opacity hover:opacity-70 cursor-pointer ${className ?? ""}`} style={style}>
+      {copied ? "Copied!" : hex}
+    </button>
+  );
 }
 
 export default function ColourPalette() {
@@ -20,7 +37,7 @@ export default function ColourPalette() {
         {[primary, dark, darkHighlight, background].map((c) => (
           <div key={c.hex}>
             <div className="rounded-xl h-32 mb-3 flex items-end p-4" style={{ backgroundColor: c.hex, border: isLight(c.hex) ? "1px solid #e5e7eb" : "none" }}>
-              <span className="font-heading text-lg font-medium" style={{ color: isLight(c.hex) ? "#2c2e33" : "#ffffff" }}>{c.hex}</span>
+              <CopyHex hex={c.hex} className="text-lg" style={{ color: isLight(c.hex) ? "#2c2e33" : "#ffffff" }} />
             </div>
             <p className="font-heading text-sm font-medium text-[#2c2e33] mb-0.5">{c.label}</p>
             <p className="text-xs text-[#9ca3af] leading-relaxed">{c.usage}</p>
@@ -35,7 +52,7 @@ export default function ColourPalette() {
           {palette.map((s) => (
             <div key={s.hex}>
               <div className="aspect-square rounded-lg mb-2" style={{ backgroundColor: s.hex, border: isLight(s.hex) ? "1px solid #e5e7eb" : "none" }} />
-              <p className="text-[9px] text-[#9ca3af] leading-tight">{s.hex}</p>
+              <CopyHex hex={s.hex} className="text-[9px] text-[#9ca3af] leading-tight block" />
             </div>
           ))}
         </div>
@@ -55,13 +72,13 @@ export default function ColourPalette() {
             <div className="w-10 h-10 rounded-md shrink-0 border border-[#e5e7eb]" style={{ backgroundColor: u.hex }} />
             <div>
               <p className="text-sm font-medium text-[#2c2e33] mb-0.5">{u.label}</p>
-              <p className="text-[11px] text-[#9ca3af]">{u.note}</p>
+              <CopyHex hex={u.hex} className="text-[11px] text-[#9ca3af]" />
             </div>
           </div>
         ))}
       </div>
 
-      {/* Styling notes — glass / border */}
+      {/* Styling notes */}
       <div className="card p-6">
         <h3 className="text-[10px] tracking-[0.2em] uppercase text-[#9ca3af] mb-6">Styling Notes</h3>
         <div className="grid sm:grid-cols-3 gap-6">

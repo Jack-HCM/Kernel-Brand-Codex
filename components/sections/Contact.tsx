@@ -1,4 +1,3 @@
-import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { brand } from "@/config/brand";
 
@@ -118,7 +117,7 @@ export default function Contact() {
       {/* Footer */}
       <div className="mt-20 pt-10 border-t border-[#e5e7eb] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <Image src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" width={80} height={14} />
+          <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ width: 80, height: "auto" }} />
         </div>
         <div className="text-right">
           <p className="text-[11px] text-[#d1d5db]">Brand Codex v{brand.version}</p>

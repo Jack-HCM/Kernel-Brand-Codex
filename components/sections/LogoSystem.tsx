@@ -1,14 +1,18 @@
-import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { brand } from "@/config/brand";
 
-function LogoVariant({ bg, src, label, w, h, border }: { bg: string; src: string; label: string; w: number; h: number; border?: boolean }) {
+function LogoVariant({ bg, src, label, w, border }: { bg: string; src: string; label: string; w: number; border?: boolean }) {
   return (
     <div>
       <div className={`rounded-xl flex items-center justify-center p-10 mb-3 aspect-video ${border ? "border border-[#e5e7eb]" : ""}`} style={{ backgroundColor: bg }}>
-        <Image src={src} alt="Kernel" width={w} height={h} />
+        <img src={src} alt="Kernel" style={{ width: w, height: "auto", maxWidth: "100%" }} />
       </div>
-      <p className="text-xs text-[#9ca3af]">{label}</p>
+      <div className="flex items-center justify-between">
+        <p className="text-xs text-[#9ca3af]">{label}</p>
+        <a href={src} download className="text-[10px] text-[#8fa998] hover:underline flex items-center gap-1">
+          ↓ SVG
+        </a>
+      </div>
     </div>
   );
 }
@@ -20,16 +24,16 @@ export default function LogoSystem() {
 
       {/* Four configurations */}
       <div className="grid sm:grid-cols-2 gap-6 mb-12">
-        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Landscape-Black.svg" label="Landscape — light background" w={220} h={40} border />
-        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Landscape-White.svg" label="Landscape — dark background" w={220} h={40} />
-        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Portrait-Black.svg"  label="Portrait — light background"  w={120} h={144} border />
-        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Portrait-White.svg"  label="Portrait — dark background"   w={120} h={144} />
+        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Landscape-Black.svg" label="Landscape — light background" w={220} border />
+        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Landscape-White.svg" label="Landscape — dark background" w={220} />
+        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Portrait-Black.svg"  label="Portrait — light background"  w={120} border />
+        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Portrait-White.svg"  label="Portrait — dark background"   w={120} />
       </div>
 
       {/* Motif + Typeface */}
       <div className="grid sm:grid-cols-2 gap-6 mb-16">
-        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Motif-White.svg"   label="Motif only — standalone mark" w={100} h={76} />
-        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Typeface-Black.svg" label="Wordmark only — when motif used elsewhere" w={160} h={16} border />
+        <LogoVariant bg="#2c2e33" src="/logos/Kernel-Motif-White.svg"    label="Motif only — standalone mark" w={100} />
+        <LogoVariant bg="#f8f8f8" src="/logos/Kernel-Typeface-Black.svg" label="Wordmark only — when motif used elsewhere" w={160} border />
       </div>
 
       {/* Clear space + Min size */}
@@ -38,7 +42,7 @@ export default function LogoSystem() {
           <h3 className="text-[10px] tracking-[0.2em] uppercase text-[#9ca3af] mb-6">Clear Space</h3>
           <div className="flex items-center justify-center py-6 mb-4">
             <div className="relative border border-dashed border-[#8fa998]/40 p-8">
-              <Image src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" width={140} height={25} />
+              <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ width: 140, height: "auto" }} />
               {["top","bottom","left","right"].map((pos) => (
                 <span key={pos} className={`absolute text-[9px] text-[#8fa998]/60 ${
                   pos==="top"?"top-0 left-1/2 -translate-x-1/2 -translate-y-1/2":
@@ -54,8 +58,14 @@ export default function LogoSystem() {
         <div className="card p-8">
           <h3 className="text-[10px] tracking-[0.2em] uppercase text-[#9ca3af] mb-6">Minimum Size</h3>
           <div className="flex items-end gap-8 py-4 mb-4">
-            <div><Image src="/logos/Kernel-Motif-Black.svg" alt="Kernel motif" width={24} height={18} className="mb-2" /><p className="text-[10px] text-[#9ca3af]">24px digital</p></div>
-            <div><Image src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" width={80} height={14} className="mb-2" /><p className="text-[10px] text-[#9ca3af]">10mm print</p></div>
+            <div>
+              <img src="/logos/Kernel-Motif-Black.svg" alt="Kernel motif" style={{ width: 24, height: "auto" }} className="mb-2" />
+              <p className="text-[10px] text-[#9ca3af]">24px digital</p>
+            </div>
+            <div>
+              <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ width: 80, height: "auto" }} className="mb-2" />
+              <p className="text-[10px] text-[#9ca3af]">10mm print</p>
+            </div>
           </div>
           <p className="text-xs text-[#9ca3af] leading-relaxed">{brand.logo.minSize}</p>
         </div>

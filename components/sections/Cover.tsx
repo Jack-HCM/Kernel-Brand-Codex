@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { brand } from "@/config/brand";
 
 export default function Cover() {
@@ -23,7 +22,7 @@ export default function Cover() {
       <div className="relative flex-1 flex flex-col justify-center px-8 lg:pl-[calc(14rem+2rem)] pb-10">
         <p className="text-[11px] tracking-[0.3em] uppercase text-[#6b7280] mb-8">{brand.url}</p>
         <div className="mb-12">
-          <Image src="/logos/Kernel-Landscape-White.svg" alt="Kernel" width={280} height={50} priority />
+          <img src="/logos/Kernel-Landscape-White.svg" alt="Kernel" style={{ width: 280, height: "auto" }} />
         </div>
         <h1 className="font-heading text-5xl lg:text-7xl font-medium text-white leading-[1.05] max-w-2xl mb-6">
           Brand Guidelines &amp; Design System

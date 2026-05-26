@@ -1,4 +1,3 @@
-import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { brand } from "@/config/brand";
 
@@ -15,11 +14,11 @@ export default function BrandApplications() {
             <div className="flex gap-1.5">
               {["#e5e7eb","#e5e7eb","#e5e7eb"].map((c,i) => <div key={i} className="w-2.5 h-2.5 rounded-full" style={{backgroundColor:c}} />)}
             </div>
-            <div className="flex-1 mx-4 bg-white border border-[#e5e7eb] rounded px-3 py-1 text-[10px] text-[#9ca3af]">{brand.url}</div>
+            <div className="flex-1 mx-4 bg-white border border-[#e5e7eb] rounded px-3 py-1 text-[10px] text-[#9ca3af]">www.kernel.ai</div>
           </div>
           <div className="bg-[#2c2e33] p-8">
             <nav className="flex items-center justify-between mb-16">
-              <Image src="/logos/Kernel-Landscape-White.svg" alt="Kernel" width={100} height={18} />
+              <img src="/logos/Kernel-Landscape-White.svg" alt="Kernel" style={{ width: 100, height: "auto" }} />
               <div className="hidden sm:flex items-center gap-6 text-xs text-[#9ca3af]">
                 <span>Platform</span><span>Solutions</span><span>Customers</span>
                 <button className="px-4 py-2 rounded-lg bg-white text-[#2c2e33] text-xs font-medium">Get started</button>
@@ -40,27 +39,70 @@ export default function BrandApplications() {
         </div>
       </div>
 
-      {/* LinkedIn collateral */}
+      {/* Social */}
       <div className="mb-16">
-        <h3 className="text-[10px] tracking-[0.2em] uppercase text-[#9ca3af] mb-6">Social — LinkedIn Collateral</h3>
+        <h3 className="text-[10px] tracking-[0.2em] uppercase text-[#9ca3af] mb-6">Social — LinkedIn Templates</h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {[
-            { bg: "#2c2e33", textColor: "#ffffff", headline: "The AI infrastructure for enterprise CRM.", accent: "#8fa998" },
-            { bg: "#8fa998", textColor: "#2c2e33", headline: "No waterfalls. No compromises.", accent: "#2c2e33" },
-            { bg: "#f8f8f8", textColor: "#2c2e33", headline: "20,000+ duplicate accounts removed.", accent: "#8fa998", border: true },
-            { bg: "#3c4e53", textColor: "#ffffff", headline: "RevOps is the hero.", accent: "#d7e3db" },
-          ].map(({ bg, textColor, headline, accent, border }) => (
-            <div key={headline} className="aspect-square rounded-xl p-5 flex flex-col justify-between"
-              style={{ backgroundColor: bg, border: border ? "1px solid #e5e7eb" : "none" }}>
-              <Image src={textColor === "#ffffff" ? "/logos/Kernel-Landscape-White.svg" : "/logos/Kernel-Landscape-Black.svg"}
-                alt="Kernel" width={70} height={13} />
-              <div>
-                <p className="font-heading text-xs font-medium leading-tight mb-1" style={{ color: textColor }}>{headline}</p>
-                <p className="text-[9px]" style={{ color: accent }}>{brand.url}</p>
+
+          {/* 1 — Customer quote */}
+          <div className="aspect-square rounded-xl p-5 flex flex-col justify-between" style={{ backgroundColor: "#2c2e33" }}>
+            <img src="/logos/Kernel-Landscape-White.svg" alt="Kernel" style={{ width: 64, height: "auto" }} />
+            <div className="flex-1 flex flex-col justify-center py-4">
+              <p className="font-heading text-[11px] font-medium leading-snug text-white mb-3">
+                &ldquo;Kernel removed 20,000 duplicate accounts in our first week. RevOps finally has a source of truth.&rdquo;
+              </p>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-full bg-[#8fa998]/30 flex items-center justify-center flex-shrink-0">
+                  <span className="text-[7px] text-[#8fa998]">SA</span>
+                </div>
+                <div>
+                  <p className="text-[8px] text-white leading-tight">Sarah Ahmed</p>
+                  <p className="text-[7px] text-[#6b7280] leading-tight">Director, Revenue Ops</p>
+                </div>
               </div>
             </div>
-          ))}
+            <div className="flex items-center justify-between">
+              <span className="px-2 py-0.5 rounded-full bg-[#8fa998]/20 border border-[#8fa998]/30 text-[#8fa998] text-[7px]">50% accuracy gain</span>
+            </div>
+          </div>
+
+          {/* 2 — Stat highlight */}
+          <div className="aspect-square rounded-xl p-5 flex flex-col justify-between" style={{ backgroundColor: "#3c4e53" }}>
+            <img src="/logos/Kernel-Motif-White.svg" alt="Kernel" style={{ width: 28, height: "auto" }} />
+            <div>
+              <p className="font-heading text-4xl font-medium text-white leading-none mb-1">20k+</p>
+              <p className="font-heading text-[11px] font-medium text-[#d7e3db] leading-snug mb-1">duplicate accounts removed.</p>
+              <p className="text-[9px] text-[#9ca3af] leading-relaxed">One source of truth for global operations.</p>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-1 h-1 rounded-full bg-[#8fa998]" />
+              <span className="text-[8px] text-[#8fa998]">{brand.url}</span>
+            </div>
+          </div>
+
+          {/* 3 — Brand statement */}
+          <div className="aspect-square rounded-xl p-5 flex flex-col justify-between" style={{ backgroundColor: "#8fa998" }}>
+            <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ width: 64, height: "auto" }} />
+            <div>
+              <p className="font-heading text-base font-medium text-[#2c2e33] leading-tight mb-2">No waterfalls. No compromises.</p>
+              <p className="text-[9px] text-[#3c4e53] leading-relaxed">One source of truth for enterprise CRM.</p>
+            </div>
+            <p className="text-[8px] text-[#3c4e53]">{brand.url}</p>
+          </div>
+
+          {/* 4 — Feature / light */}
+          <div className="aspect-square rounded-xl p-5 flex flex-col justify-between border border-[#e5e7eb]" style={{ backgroundColor: "#f8f8f8" }}>
+            <img src="/logos/Kernel-Landscape-Black.svg" alt="Kernel" style={{ width: 64, height: "auto" }} />
+            <div>
+              <span className="px-2 py-0.5 rounded-full border border-[#8fa998]/40 bg-[#8fa998]/10 text-[#3c4e53] text-[7px] mb-3 inline-block">AI-native</span>
+              <p className="font-heading text-sm font-medium text-[#2c2e33] leading-tight mb-1">Entity resolution at enterprise scale.</p>
+              <p className="text-[9px] text-[#9ca3af] leading-relaxed">Structured account intelligence tailored to your GTM.</p>
+            </div>
+            <p className="text-[8px] text-[#9ca3af]">{brand.url}</p>
+          </div>
+
         </div>
+        <p className="text-xs text-[#9ca3af] mt-3">1:1 square format for LinkedIn and Instagram. More templates to follow.</p>
       </div>
 
       {/* Email signature */}
